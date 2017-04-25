@@ -2,7 +2,7 @@
 /**
  * Teaser_XH for CMSimple_XH
  * Frontend
- * @version 1.2, May 2014
+ * @version 1.2.1, April 2017
  * @author svasti@svasti.de
  */
 

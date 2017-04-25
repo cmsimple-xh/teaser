@@ -2,7 +2,7 @@
 /**
  * Teaser_XH for CMSimple_XH
  * Backend
- * @version 1.2, May 2014
+ * @version 1.2.1, April 2017
  * @author svasti@svasti.de
  */
 
@@ -61,7 +61,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
                                         : '';
 
         $text = "<?php\n\n"
-              . '$plugin_cf[\'teaser\'][\'version\']="1.2";' . "\n"
+              . '$plugin_cf[\'teaser\'][\'version\']="1.2.1";' . "\n"
               . '$plugin_cf[\'teaser\'][\'editor_height\']="' .                             $teaser_editor_height         . '";' . "\n"
               . '$plugin_cf[\'teaser\'][\'path\']="' .                                      $teaser_path                  . '";' . "\n"
               . '$plugin_cf[\'teaser\'][\'path_starts_in_content_folder\']="' .             $teaserpath_in_content_folder . '";' . "\n"
@@ -81,7 +81,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
 
         // activation form for updating
         // ===============================
-        if(!isset($plugin_cf['teaser']['version']) || version_compare($plugin_cf['teaser']['version'], '1.2', '!=')) {
+        if(!isset($plugin_cf['teaser']['version']) || version_compare($plugin_cf['teaser']['version'], '1.2.1', '!=')) {
 
             $o .=  '<h1 style="border:2px red solid;background:yellow;text-align:center;">'
                 .  $plugin_tx['teaser']['activation_alert']
