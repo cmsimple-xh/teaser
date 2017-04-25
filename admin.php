@@ -25,9 +25,9 @@ if (!function_exists('file_put_contents')) {
     }
 }
 
-initvar('teaser');
-
-if($teaser){
+if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministration('teaser')
+    || isset($teaser) && $teaser === 'true'
+) {
 
     $o .= "\n\n<!-- Teaser Plugin -->\n\n";
     $plugin = basename(dirname(__FILE__),"/");
