@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Hilfedatei: Teaser_XH</title>
+<style type="text/css">
+body {background: #eaf4fb; font: normal normal normal 12pt/1.6 'trebuchet MS',sans-serif}
+.notice {margin-left:3em; font-style:italic; color:#050; font-size:92%;}
+.new {margin:0 0 0 3em;font-size:92%; color:#400}
+code {font-family: consolas, 'courier new', monospace; font-weight:bold; font-size: 90%; color:#900;}
+body div.main {width: 940px; margin: 3em auto; background: #eee; border: 1px solid #5ab; padding: 0;box-shadow: 0em 0em 2em 0em #bbd;border-radius: 4.5em;}
+body div.main div.main2 {width: 760px; margin: 30px auto; background: #fff; border: 2px solid #8de; padding: 0 56px 3em;border-radius: 3em;}
+p {margin:0 0 1em 0;}
+em, b, strong {font-weight: bold; color:#008;letter-spacing:1px;}
+.red {color:red;font-weight:bold;}
+h2, h3, h4, h5, h6 {font-family: Georgia; color: #099;margin:1.8em 0 .7em;}
+h4 {margin-bottom:0;}
+h5 {margin:0 0 2em;}
+h1 {font: normal normal 30pt Georgia, 'Times new roman', serif;margin:1em 0;color: #068; }
+.indent {margin-left:5em;opacity:.8;}
+ul {margin:0;}
+</style>
+
+
+</head>
+<body>
+<div class="main">
+<div class="main2">
+<h1>Teaser_XH 1.2</h1>
+
+<h4>für CMSimple_XH 1.5/1.6, CMSimple 4<br>
+mit den Online-Editoren: CKeditor, Tinymce oder Codeeditor</h4><br>
+
+<p>Teaser_XH fügt auf einer Seite mehrere div-Bereiche ein, die vorher im Plugin-Backend mit Inhalt gefüllt wurden.
+Ihnen kann ein interner oder externer Link zugeordnet werden, damit sie als Lockartikel für weitere Seiten dienen können.
+Mouse-over-Effekte sind für den ganzen Bereich möglich.</p>
+
+<p>Durch Css-Stile können diese Teaser untereinander oder nebeneinander arrangiert werden.
+Anzahl und Reihenfolge der Teaser können im Plugin geändert werden.
+Verschiedene Teasergruppen können durch css unterschiedlich gestaltet werden.
+Die Backendbearbeitung der Teaser berücksichtigt nicht nur den speziellen css-Stil der Teasergruppe, sondern auch das Seitentemplate der Seite
+auf denen die Teasergruppe erscheinen soll.</p>
+
+
+
+<h4>Neu in Version 1.2</h4>
+<ul>
+<li><h4>Leichtes Updaten</h4>
+<p>Einfach neue Version über alte installieren und im Backend aktivieren. Die alten Konfigurationseinstellungen
+und Daten bleiben erhalten. Die css-Datei wird aber überschrieben, da deutlich verändert.
+Falls man Änderungen an der css-Datei gemacht hatte, diese vorher sichern und anschließend mit der neuen vergleichen und diese
+eventuell abändern.
+</p></li>
+
+<li><h4>Plugin-Stylesheet.css verbessert</h4><ul>
+    <li>Die einzelnen Teaser div-s
+    sind jetzt online-blocks statt floats, dadurch verbesserter Fluss der Teaser.</li>
+    <li>clear:both am Anfang des Teaser-Bereichs auskommentiert (für manche Templates erforderlich).</li>
+    </ul>
+</li>
+<li>kleine Korrektur für Integration des CKeditors.</li>
+</ul>
+<p><b>Neu in 1.1</b><br>
+Kopiermöglichkeit von Teasern.<br>
+<b>Neu in 1.0</b><br>
+Teaser können zum Bearbeiten durch Klick auf den Vorschau-Teaser ausgewählt werden.
+</p>
+
+
+<h2>Anwendung</h2>
+<p>Im Text an gewünschter Stelle einfügen <code>{{{PLUGIN:teaser();}}}</code>, damit wird die Standard-Teaserdatei aufgerufen.
+Möchte man eine spezielle Teaserdatei aufrufen, fügt man ein: <code>{{{PLUGIN:teaser('GEWÜNSCHTE_TEASER_DATEI');}}}</code></p>
+
+<p>Über das Pluginmenü Teaser geht es direkt zur Bearbeitungsseite mit Online-Editor und dem zuletzt bearbeitetem Teaser.
+Darunter erscheint eine Vorschau der ganzen Teaserdatei, d.h. der Teasergruppe. Durch Klick auf einen Teaser wird dieser in den Editor geladen.
+Die Höhe des Editor ist in der Konfiguration einstellbar.</p>
+
+<p>In einer Teaserdatei wird immer eine ganze Teasergruppe als fertiger HTML-Code gespeichert.
+So braucht das CMS keinen komplizierten Code auszuführen um die Teaser zu zeigen.
+Für die Bearbeitung der Teaser im Backend extrahiert das Plugin aus dem fertigen HTML-Code die Einzelteaser.</p>
+<p>
+Die <strong>Standard-Teaserdatei</strong> ist <code>teaser_XX.txt</code> [<code>XX</code> = Sprachkürzel der eingestellten Sprache, z.b. "de"].
+Ob man <strong>Standard-Teaserdatei</strong> oder <code>teaser_XX.txt</code> auswählt, ist egal.
+Weitere Teaserdateien können erzeugt werden, den eingegebenen Namen wird automatisch <code>.txt</code> angefügt, falls man das nicht schon selbst getan hat.
+Als Beispiel liegen die Dateien test.txt und test2.txt bei.
+Jeder Teaser-Gruppe ist ein Css-Stil zugeordnet, der über ein Optionsmenü gewechselt werden kann.</p>
+
+<h4>Links und Hintergrund</h4>
+<p>Man kann jedem Teaser einen Link und einen individuellen Hintergrund zuordnen. Der Button, um das Hintergrundmenü zu öffnen, wird nur gezeigt,
+wenn in der Konfiguration der Pfad zum entsprechenden Bildverzeichnis eingestellt wurde. Voreingestellt ist <code>plugins/teaser/images/</code>.
+Bildwiederholung, horizontale und vertikale Verschiebung oder Hintergrundfarben müssen neben der Bildauswahl eingetippt werden.</p>
+<p>Das Bearbeitungsfester versucht Stil und Hintergrund des Templates zu übernehmen.
+Das funktioniert jedoch nur bei einfach aufgebauten Templates.
+Die Vorschau unter dem Bearbeitungsfenster zeigt das tatsächliche Ergebnis.</p>
+
+<p>Mehrsprachige Websites: Bitte beachten, dass interne Links und Hintergrundbilder die auf einer Zweitsprache erstellt wurden,
+nur dort richtig funktionieren, da der Pfad zu den Hintergrundbildern von Zweitsprachen aus ein anderer ist als von der Hauptsprache.
+Teaser für Zweitsprachen deshalb in den Zweitsprachen bearbeiten, da sonst Links, Bilder und Hintergrundbilder nicht gefunden werden.</p>
+
+
+<h2>Teaser Css-Stile bearbeiten</h2>
+
+<p>Teaser_XH erzeugt als Basis einen die Teasergruppe umgebenden div-Bereich <code>&lt;div class="teaser <i>STILNAME</i>"></code>.
+Die einzelnen Teaser sind zusätzlich von einem weiteren <code>&lt;div></code>-Bereich umgeben.
+Die Stilzuweisung läuft wie üblich über die Plugin-Datei stylesheet.css.</p>
+<p>Einzelne Teaserstil-Klassen beginnen jeweils mit <code>/*start<i>STILNAME</i>*/</code> und enden mit <code>/*end<i>STILNAME</i>*/</code>.
+Innerhalb dieses Bereichs werden die Eigenschaften der Stilklasse definiert,
+wobei jede Definition  mit <code>div.teaser.<i>STILNAME</i> div</code> oder <code>.teaser.<i>STILNAME</i> div</code> beginnt.</p>
+<p>Im Plugin sind einige Beispiel-Teaserstile enthalten.</p>
+<p><small><strong>Zu beachten:</strong> Da Browser css-Stildateinen auf Vorrat speichern (um Seiten schneller laden zu können),
+werden Änderungen an css-Dateien  nicht gleich im Browser berücksichtigt.
+Deshalb kommt es vor, dass eine Änderung, die man an der Stylesheet.css gemacht hat,
+nicht auf der tatsächlichen Seite erscheint und stattdessen noch der alte Stil zu sehen ist.
+Die neuen css-Daten liegen dann zwar vor, aber der Browser ruft sie nicht ab.
+Dann die Seite noch einmal laden, um den Browser dazu zu bringen, die css.Datei neu einzulesen.</small></p>
+
+
+<h4>Hovereffekte bei Teaser</h4>
+<p>Der ganze Teaser kann als Link wirken. Diese globale Links stehen im fertigen HTML-am Anfang des Teasers
+in einem <code>span</code> Abschnitt vor dem eignetlichen Teaserinhalt.
+Anweisungen wie
+<code>div.teaser.STILNAME div:hover a ~ h4 {. . .}</code> bedeuten, dass der Hovereffekt für
+h4 Absätze gilt, wenn ein Globaler Link (div.teaser.STILNAME div a) im div vorhergeht.
+Hovereffekte auf Umrandungen o.Ä. werden erzeugt durch <code>div.teaser.STILNAME div:hover span.teaser {. . .}</code>
+</p>
+
+
+<h2>Seiten-Templates</h2>
+<p>
+Wenn man verschiedene Seiten-Templates nutzt, möchte man Teaser vielleicht auf einer Seite mit speziellem Template einbauen.
+Das kann schon bei der Bearbeitung und Vorschau des Teasers berücksichtigt werden.</p>
+<p>
+In der Plugin Konfiguration kann man unter <strong>template change for specific teaserfiles</strong>
+für jede Teasergruppe ein eigenes Template und, wenn gewünscht,
+auch Morepagedata-Anweisungen (für Templateänderungen mit diesem Plugin) eintragen.</p><p>
+Die Eingabemethode ist wie folgt:<br>
+<strong>Teaserdateiname</strong> (nicht vergessen, diese Namen enden immer auf <strong>.txt</strong>,
+der Name der Standarddatei ist <code>teaser_SPRACHKÜRZEL.txt</code>),
+<strong>Semikolon, Templatename,</strong> und eventuell Semikolon und Morepagedataangaben.
+Für weitere Teaserdateien zuerst das Trennzeichen <strong>|</strong> eingeben und dann wie bisher vorgehen.</p>
+<p>
+Zur Eingabe von Morepagedata-Angaben pro Angabe die entsprechende Morepagedata-Variable eintragen, aber ohne <code>$</code>,
+gefolgt von <code>=</code>, dem gewünschten Wert und diese Variablendefinition mit Semikolon abschließen.
+Werte selbst sollten natürlich weder '' noch <code>=</code> enthalten, da das Trennzeichen sind.</p>
+<h4>Beispiel:</h4>
+<p><code>teaser_de.txt;;wide=1;|test.txt;venedig</code><br>
+Hier gibt es zwei Teile, getrennt durch "bedeutet:<code>|</code>". Der erste Teil bedeutet:
+Die deutsche Standarddatei nutzt kein anderes Template,
+aber die Morepagedata-Änderung $wide soll angeschaltet sein (d.h. der Textbereich soll breiter als sonst sein).
+Der zweite Teil bedeutet:
+Bei der Templategruppe test.txt soll das Seiten-Template "venedig" während der Bearbeitung im Teaser-Backend benutzt werden.
+</p>
+
+
+<h2>Verschiedenes</h2>
+
+<h3>Speicherort für Teaserdateien</h3>
+<p>Man kann zwischen drei Speicherorten wählen</p>
+<ul>
+ <li>Voreingestellt ist <b>plugin/teaser/data/</b>.</li>
+ <li>Um die Teasers in den Userfiles zu speichern, in der Plugin Konfiguration unter <b>path</b> eintragen <code>userfiles/plugins/teaser/</code></li>
+ <li>Um die Teasers im Content Ordner zu speichern, in der Plugin Konfiguration
+ unter <b>path</b> eintragen <code>plugins/teaser/</code> und <code>1</code> in <b>path starts in content folder</b>.</li>
+</ul>
+
+<h3>Schreibrechte</h3>
+<p>Je nach Serverkonfiguration muss man eventuell Schreibrechte erteilen, und zwar dem <b>data</b>-Ordner und seinen Dateien,
+ebenso  <b>languages, css</b> und <b>config</b>.</p>
+</div>
+</div>
+</body>
+</html>

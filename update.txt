@@ -1,0 +1,7 @@
+Update
+======
+Install everything on top.
+Go to plugin backend and active plugin.
+
+If you have made specific changes in the css, you will have to redo them.
+However your old config values and your data will not be overwritten.

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Helpfile: Teaser_XH</title>
+<style type="text/css">
+body {background: #eaf4fb; font: normal normal normal 12pt/1.6 'trebuchet MS',sans-serif}
+.notice {margin-left:3em; font-style:italic; color:#050; font-size:92%;}
+.new {margin:0 0 0 3em;font-size:92%; color:#400}
+code {font-family: consolas, 'courier new', monospace; font-weight:bold; font-size: 90%; color:#900;}
+body div.main {width: 940px; margin: 3em auto; background: #eee; border: 1px solid #5ab; padding: 0;box-shadow: 0em 0em 2em 0em #bbd;border-radius: 4.5em;}
+body div.main div.main2 {width: 760px; margin: 30px auto; background: #fff; border: 2px solid #8de; padding: 0 56px 3em;border-radius: 3em;}
+p {margin:0 0 1em 0;}
+em, b, strong {font-weight: bold; color:#008;letter-spacing:1px;}
+.red {color:red;font-weight:bold;}
+h2, h3, h4, h5, h6 {font-family: Georgia; color: #099;margin:1.8em 0 .7em;}
+h4 {margin-bottom:0;}
+h5 {margin:0 0 2em;}
+h1 {font: normal normal 30pt Georgia, 'Times new roman', serif;margin:1em 0;color: #068; }
+.indent {margin-left:5em;opacity:.8;}
+ul {margin:0;}
+</style>
+
+
+</head>
+<body>
+<div class="main">
+<div class="main2">
+<h1>Teaser_XH 1.2</h1>
+
+<h4>for CMSimple_XH 1.5/1.6, CMSimple 4<br>with online editors: CKeditor, Tinymce or Codeeditor</h4><br>
+
+<p>Teaser_XH puts several divs on a page, each of which can be filled with content in the plugin backend.
+These divs can be assigned an internal or external link in order to serve as teasers for other pages.</p>
+
+<p>Via css the teasers can be arranged in rows or one under the other.
+Their number and order can be changed in the plugin backend.
+Mouse over effects are possible.
+Different groups of teasers can get different css-styling which will be shown also in the backend.
+For backend editing a different site template can be assigned as well to a specific group of teasers.</p>
+
+
+
+<h4>New in Version 1.2</h4>
+<ul>
+<li><h4>Easy Updating</h4>
+<p>Simply install new version on top of old one, got to the backend an activate the plugin.
+Your config and data will remain, however the plugin css will be overwritten. If you changed the css, save your old css, compare to the new one
+and eventually change the new one.
+</p></li>
+<li><h4>New plugin stylesheet-css</h4><ul>
+    <li>individual teasers were changed
+    from floats to inline blocks, which results in better alignment</li>
+    <li><code>clear:both</code> removed from the global teaser area
+    (necessary for certain templates).</li>
+    </ul></li>
+<li>a naming problem with CKeditor has been fixed.</li>
+</ul>
+<p><b>New in 1.1</b><br>Copy button for teasers<br>
+<b>New in 1.0:</b><br>
+To edit a teaser click on the teaser preview in admin mode.</p>
+
+
+
+<h2>Usage</h2>
+<p>To put teasers on a page enter the code <code>{{{PLUGIN:teaser();}}}</code>. This will present the default teaser file.
+If you need a specific teaser group, use <code>{{{PLUGIN:teaser('NAME_OF_YOUR_TEASER_FILE');}}}</code></p>
+
+<p>The plugin menu will display the online editor with the teaser you edited last followed by a preview of the whole teaser group.
+The height of the editor window can be set in plugin config.</p>
+
+<p>Teaser files always contain a group of teasers in ready HTML code.
+Thus the plugin doesn't require a lot of computing by the CMS.</p>
+
+<p>For backend editing the plugin extracts a single teaser from the HTML code of the whole teaser group.
+Select a teaser for editing by clicking on the preview below the editor.</p>
+<p>
+The <b>standard teaser group</b> is <code>teaser_XX.txt</code> [<code>XX</code> = language code of your site].
+Choosing in the option list either <strong>standard file</strong> or <strong>teaser_XX.txt</strong> is the same.
+Via the option  list you can create, delete or copy teaser group files.
+Teaser_XH comes with several examples.
+Names for new teaser group files will automatically get the ending <code>.txt</code>.</p>
+
+<p>
+Every teaser group has its css style class, which can be selected from an option menu.</p>
+
+
+<h4>Links and Background</h4>
+<p>Single Teasers can get a global Link and an individual background.
+The button for displaying the background dialog is shown only, when an image path is specified in plugin config.
+Preset is  <code>plugins/teaser/images/</code>.
+Repetition, horizontal and vertical adjustment and background color can be added <b>manually</b> next to the image option list.</p>
+<p>The editor tries to mimic the style and background of the template. However in complicated templates it doesn't work.
+The preview however shows the real result.</p>
+<p><b>Note for multilanguage sites:</b> Internal links and background images set in secondary languages usually do work only in secondary languages and not in the main language (and vice versa),
+as the image path for secondary languages differs from the image path in the main language.
+Edit teasers for secondary languages from the secondary language, otherwise links, images and background images may not be found.</p>
+
+<h2>Editing Css Styles</h2>
+
+<p>Teaser_XH creates a basic <code>&lt;div class="teaser <i>STYLE-CLASS-NAME</i>"></code> wrapper around all teasers of a group. The individual teasers again are surrounded by another <code>&lt;div></code>.
+Styling is done as usual via the plugin css.</p>
+<p>Definitions of the different available Teaser style classes always start with <code>/*startSTYLE-CLASS-NAME*/</code> and end with <code>/*endSTYLE-CLASS-NAME*/</code>.
+Every css-definition belonging to such a class must begin with <code>div.teaser.STYLE-CLASS-NAME div</code> or <code>.teaser.STYLE-CLASS-NAME div</code>.</p>
+
+<p><small><strong>Note:</strong> Browsers cache css-files (to load pages faster),
+therefore changes in a css file may not be displayed on normal pages by your browser because the css is not read again.
+Reloading the page usually makes the browser reload the css, and your changes will become visible.</small></p>
+
+<h4>Hovering Effects in Teasers With Global Links</h4>
+<p>The plugin writes the global link at the beginning of the teaser content in a <code>span</code> area.
+This is used for hovering effects, e.g.
+<code>div.teaser.STYLENAME div:hover a ~ h4 {...}</code> produces a hovering effect on
+h4 paragraphs, when a global link is present. For effects
+on borders and background, use
+<code>div.teaser.STYLENAME:hover span.teaser {...}</code>
+</p>
+
+<h2>Page Templates</h2>
+
+<p>If you use different templates on your site, you may want to use teaser on a page with a special template.
+This template can also be used while editing the teasers.</p>
+<p>
+In plugin config you can set under <strong>template change for specific teaserfiles</strong>
+the template as well as morepagedata settings for every teaser group.</p>
+
+<p>The entry mode is as follows:<br>
+First enter the <strong>teaserfilename</strong> (don't forget that these names always end in <strong>.txt</strong>,
+the name of the standard teaser file being <code>teaser_LANGUAGECODE.txt</code>),
+followed by a <strong>semicolon,</strong> and the name of the wanted <strong>template,</strong> and, if morepagedata settings are needed, semicolon and morepagedata variables.
+If you need to enter data for more teaser files, enter as separator <strong>|</strong> and proceed as before.
+</p>
+<p>For morepagedata settings, enter the relevant morepagedata variables (without <code>$</code>) followed by <code>=</code>,
+their value and <code>;</code>.
+Don't use '' or <code>=</code> in the value part, as these are reserved signs.</p>
+<h4>Example:</h4>
+<p><code>teaser_en.txt;;wide=1;|test.txt;venice</code><br>
+Here are two parts divided by "<code>|</code>".
+The first part means: the standard teaser file uses the standard template (= because there is no entry between ;;),
+however a morepagedata template change is called,
+namely the variable $wide should be switched on
+(i.e. the textarea should be wider than normal).
+Second part means: the teasers of the file test.txt should be presented in the teaser backend with the page template "venice".
+</p>
+
+
+
+<h2>Miscellaneous</h2>
+
+<h3>Saving Location of Teaser Files</h3>
+<p>Three saving locations are possible</p>
+<ul>
+ <li>Default saving location is <b>plugin/teaser/data/</b>.</li>
+ <li>To save teasers under userfiles, enter in plugin config <b>path</b> <code>userfiles/plugins/teaser/</code></li>
+ <li>To save teasers in the content folder enter in plugin config <b>path</b> <code>plugins/teaser/</code> and enter <code>1</code> in <b>path starts in content folder</b>.</li>
+</ul>
+
+<h3>Writing permissions</h3>
+<p>Depending on your server configuration you may have to give writing permissions
+to the <b>data</b> folder and its files, as well as to <b>languages, css</b> and <b>config</b>.</p>
+
+</div>
+</div>
+</body>
+</html>

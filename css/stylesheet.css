@@ -1,0 +1,283 @@
+div.teaser {
+    width:100%;
+    overflow:hidden;
+    /* clear:both; */
+}
+
+/*startstandard*/
+div.teaser.standard div {
+    width:48.5%;
+    margin:0 0 15px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+div.teaser.standard {
+    text-align: justify;
+    text-align-last: justify;
+    -moz-text-align-last:justify;
+}
+div.teaser.standard div {
+    text-align: left;
+    text-align-last: left;
+    -moz-text-align-last: left;
+}
+div.teaser.standard div h1, div.teaser.standard div h2,
+div.teaser.standard div h3, div.teaser.standard div h4,
+div.teaser.standard div h5, div.teaser.standard div h6 {
+    margin:0 0 .5em;
+    padding:5px 15px;
+    display:block;
+    background:#eee;
+}
+div.teaser.standard div p {
+    margin:0 15px 10px 0;
+}
+div.teaser.standard div:hover a ~ h1,
+div.teaser.standard div:hover a ~ h2,
+div.teaser.standard div:hover a ~ h3,
+div.teaser.standard div:hover a ~ h4,
+div.teaser.standard div:hover a ~ h5,
+div.teaser.standard div:hover a ~ h6 {
+    background: #ccc;
+}
+/*endstandard*/
+
+
+/*startrounded*/
+div.teaser.rounded div {
+    border:1px solid #aaa;
+    border-radius: 6px;
+    width:48.5%;
+    margin:0 0 15px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.teaser.rounded {
+    text-align: justify;
+    text-align-last: justify;
+    -moz-text-align-last:justify;
+}
+div.teaser.rounded div {
+    text-align: left;
+    text-align-last: left;
+    -moz-text-align-last: left;
+}
+div.teaser.rounded div:hover span.teaser {
+    border-radius: 6px;
+    border:2px dashed #0be;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.teaser.rounded div p {
+    margin:0 5px .5em;
+}
+div.teaser.rounded div h1, div.teaser.rounded div h2,
+div.teaser.rounded div h3, div.teaser.rounded div h4,
+div.teaser.rounded div h5, div.teaser.rounded div h6 {
+    margin:0 0 .5em;
+    padding:5px 5px;
+    background:#eef;
+    border-radius: 6px 6px 0 0;
+}
+/*endrounded*/
+
+
+/*startrow_of_2*/
+div.teaser.row_of_2 div {
+    border:1px solid #aaa;
+    border-bottom:none;
+    border-radius: 15px 15px 0 0;
+    width:48.5%;
+    margin:0 0 10px;
+    padding-bottom:5px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.teaser.row_of_2 {
+    text-align: justify;
+    text-align-last: justify;
+    -moz-text-align-last:justify;
+}
+div.teaser.row_of_2 div {
+    text-align: left;
+    text-align-last: left;
+    -moz-text-align-last: left;
+}
+div.teaser.row_of_2 div:hover span.teaser {
+    border-top:3px solid #fec;
+    box-shadow:inset 0 0 2em 0 #fec;
+}
+div.teaser.row_of_2 div p {
+    margin:0 5px .5em;
+}
+div.teaser.row_of_2 div h1, div.teaser.row_of_2 div h2,
+div.teaser.row_of_2 div h3, div.teaser.row_of_2 div h4,
+div.teaser.row_of_2 div h5, div.teaser.row_of_2 div h6 {
+    margin:0 0 .5em;
+    padding:5px 5px;
+    background:#eee;
+    border-radius: 15px 15px 0 0;
+}
+/*endrow_of_2*/
+
+
+/*startfullwidth*/
+div.teaser.fullwidth div {
+    width:100%;
+    margin: 1em 0;
+    overflow: hidden;
+}
+div.teaser.fullwidth div h1,
+div.teaser.fullwidth div h2,
+div.teaser.fullwidth div h3,
+div.teaser.fullwidth div h4,
+div.teaser.fullwidth div h5,
+div.teaser.fullwidth div h6 {
+    background: #eee;
+    margin:0 0 .5em;
+    padding:5px 15px;
+}
+div.teaser.fullwidth div:hover a ~ h1,
+div.teaser.fullwidth div:hover a ~ h2,
+div.teaser.fullwidth div:hover a ~ h3,
+div.teaser.fullwidth div:hover a ~ h4,
+div.teaser.fullwidth div:hover a ~ h5,
+div.teaser.fullwidth div:hover a ~ h6 {
+    background: #ddd;
+}
+/*endfullwidth*/
+
+
+/*startrow_of_3*/
+div.teaser.row_of_3 div {
+    border:1px solid #aaa;
+    margin:0 .8% 10px;
+    width: 30.5%;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.teaser.row_of_3 div p {
+    margin:0 5px .5em;
+}
+div.teaser.row_of_3 div h1, div.teaser.row_of_3 div h2,
+div.teaser.row_of_3 div h3, div.teaser.row_of_3 div h4,
+div.teaser.row_of_3 div h5, div.teaser.row_of_3 div h6 {
+    margin:0 0 .5em;
+    padding:5px 5px;
+    background:#444;
+    color:white;
+    font-weight:bold;
+}
+div.teaser.row_of_3 div:hover a ~ h1,
+div.teaser.row_of_3 div:hover a ~ h2,
+div.teaser.row_of_3 div:hover a ~ h3,
+div.teaser.row_of_3 div:hover a ~ h4,
+div.teaser.row_of_3 div:hover a ~ h5,
+div.teaser.row_of_3 div:hover a ~ h6 {
+    background: #e44;
+}
+/*endrow_of_3*/
+
+
+/*startfixed_size*/
+div.teaser.fixed_size div {
+    border:2px solid #6c6;
+    border-radius: 6px;
+    margin:0 1em 1em 0;
+    height:180px;
+    width:180px;
+    float: left;
+    vertical-align: top;
+    overflow: hidden;
+    padding:10px;
+}
+div.teaser.fixed_size div:hover  span.teaser {
+    border:2px dashed #6c6;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+div.teaser.fixed_size div h1, div.teaser.fixed_size div h2,
+div.teaser.fixed_size div h3, div.teaser.fixed_size div h4,
+div.teaser.fixed_size div h5, div.teaser.fixed_size div h6 {
+    margin-top:0;
+}
+/*endfixed_size*/
+
+
+
+/* == for enabling links even in IE6 == */
+
+.teaser div {
+    position:relative;
+}
+.teaser div span.teaser {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+    z-index: 1;
+    background-image: url('empty.gif');
+    cursor:pointer;
+}
+
+
+
+/* == only for plugin backend == */
+
+form#singleteaser label {
+    white-space: nowrap;
+}
+form#singleteaser input[type="radio"] {
+    display:none;
+}
+form#singleteaser label {
+    display:inline-block;
+    width:2em;
+    text-align:center;
+    border:2px outset #bbb;
+    background:#eee;
+}
+form#singleteaser input[type="radio"]:checked + label {
+    background:#ffe;
+    border:2px inset #bbb;
+}
+a.teaser_pop-up {
+    position:relative;
+    cursor: help;
+    text-decoration: none;
+    background: transparent;
+}
+a.teaser_pop-up:hover  {
+    background:#ffffff;
+    text-decoration:none;
+    z-index: 1;
+}
+a.teaser_pop-up span {
+    display: none;
+}
+a.teaser_pop-up:hover span {
+    font: 8.5pt/1.4 Verdana, Sans-Serif;
+    display:inline;
+    position:absolute;
+    top:2em;
+    left:0em;
+    width:15em;
+    border:2px solid #f00;
+    padding: 4px 5px;
+    margin-left: -160px;
+    width: 160px;
+    background:#dfd;
+    color:black;
+    text-align:left;
+}

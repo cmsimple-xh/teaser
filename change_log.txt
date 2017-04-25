@@ -1,0 +1,56 @@
+Teaser_XH
+by svasti
+
+1.2 (5/2014)
+    - changed plugin stylesheet.css: instead of floating div-s most teasers
+      have become inline-blocks + other little changes
+    - outcommented clear:both in teaser div, as this doesn't work with
+      non floating content areas with floating sidebars
+    - removed setting for <div style="clear:both"> at the end. Substitued by "overflow:hidden".
+    - query for the toobar variable name for compatibilty with CKEditor4CMSimple 2.1
+    - easy updating, just install plugin over existing one and activate it
+    - changed the way the editor gets the generated css: ckeditor gets it directly
+      and for tinymce it is written into a file.
+    - button-styled radio buttons for selecting a teaser within a teaser group
+
+1.1 (3/2014)
+    - corrected link to CMSimple Legal Notices which was deprecated under XH 1.6
+    - added copying possibility
+    - changed some radio buttons to standard buttons
+
+1.0.6 corrected error in help files (thx maeg)
+
+1.0.5
+    - No more annoying alerts while using CKeditor
+
+1   - version.nfo added
+
+1 rc
+    - New css. Now hover effects will occur only in teasers with global link
+    - Click on a teaser in admin preview will select this teaser for editing
+    - Background image and color now visible in editor
+
+1 beta 2, March 5, 2013
+    - css-class of teaser group always visible and directly changable
+    - it is no more necessary to enter available teaser css classes in plugin config
+    - teaser groups now have always a special css-class
+    - editor.css completely automated, no more difficult parallel
+      editing of editor.css and stylesheet.css
+    - Selection of editable teaser via radio buttons
+    - background selectable (image plus details) for every single teaser
+    - helpfiles revised
+    - copying option added
+
+1 beta Feb 2013
+    - constant preview below editor
+    - editor height configurable, works with both ckeditor and  tinymce
+    - bug fix
+
+1 alpha 2 Oct 2012
+
+    - fixed configurable data path. Teaser files can now be stored in folders 
+      under the content folder (different for every language)
+      or in userfiles (one folder for all languages) or as before in the plugin.
+    - added configurable clear:both after the teasers
+ 
+1 alpha initial release Oct 2012
