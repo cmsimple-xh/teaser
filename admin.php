@@ -399,9 +399,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
           . '</span></h2>'."\n"
           . '<p style="display:none" id="license">'
           . $plugin_tx['teaser']['license']
-          . '<a href="' . $sn . '?' . uenc($cf['menu']['legal']) . '">'
-          .  $cf['menu']['legal']
-          . '</a>.'
+          . '<a href="http://www.gnu.org/licenses/gpl.html" target="_blank">http://www.gnu.org/licenses/gpl.html</a>'
           . tag('br') . tag('br') . '</p>' . "\n" ;
 
 
