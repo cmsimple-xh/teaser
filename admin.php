@@ -262,6 +262,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
                 $teaserfinal = '<div class="teaser '.$teaserclass.'">'.$teaserfamily .'</div>'."\n";
                 file_put_contents($datapath.$fn, $teaserfinal);
             }
+            $_SESSION['teaser'][$sl]['nr'] = $newnr;
         }
 
 
