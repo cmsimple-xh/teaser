@@ -71,7 +71,8 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
               . '$plugin_cf[\'teaser\'][\'clear_after_teaser\']="'.                         $teaser_clear_after           . '";' . "\n\n"
               . '?>';
         file_put_contents($pth['folder']['plugins'] . $plugin . '/config/config.php',$text);
-        include $pth['folder']['plugins'] . $plugin . '/config/config.php';
+        header("Location:" . CMSIMPLE_URL . "?teaser");
+        exit;
     }
 
 
