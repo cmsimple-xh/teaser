@@ -35,7 +35,5 @@ $plugin_tx['teaser']['single-teaser_delete']="löschen";
 $plugin_tx['teaser']['single-teaser_copy']="kopieren";
 $plugin_tx['teaser']['single-teaser_move_position']="Reihenfolge ändern zu";
 $plugin_tx['teaser']['teaser']="Teaser";
-$plugin_tx['teaser']['temp_teaser_file']="test4.txt";
-$plugin_tx['teaser']['temp_teaser_nr']="2";
 
 ?>

@@ -34,7 +34,5 @@
     $plugin_tx['teaser']['teaser']="teaser";
 	$plugin_tx['teaser']['license']="This plugin is free software under the terms of the GNU General Public License v. 3 or later, analog to ";
     $plugin_tx['teaser']['background_help']="4 values can be entered here: <br><br>1) repeat, no-repeat, repeat-x, repeat-y <br><br>2) Horizontal position in % or in px, e.g. 0%, 50%, 100%, 20px, -100px<br><br>3) Vertical position, same as horizontal position<br><br>4) Background color, starting with # plus 3 or 6 hex-numbers, e.g.: #f00 (=red) #0f0 (=green) #00f (=blue),<br /> #fee (=light red), #efe (=light green), #eef (=light blue)";
-	$plugin_tx['teaser']['temp_teaser_file']="";
-	$plugin_tx['teaser']['temp_teaser_nr']="";
 
 ?>

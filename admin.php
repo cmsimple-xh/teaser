@@ -113,20 +113,6 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
             fclose($handle);
             $languagefile = '<?php'."\n\n" . '?>';
         }
-        // write missing ['temp...'] entries into language file
-        if(strpos($languagefile,'temp_teaser_nr')===false || strpos($languagefile,'temp_teaser_file')===false) {
-
-            if(strpos($languagefile,'temp_teaser_nr')===false) {
-                $languagefile = preg_replace('!\s*\?>\s*$!',"\n".'$plugin_tx[\'teaser\'][\'temp_teaser_nr\']="1";'."\n\n?>" ,$languagefile);
-            }
-            if(strpos($languagefile,'temp_teaser_file')===false) {
-                $languagefile = preg_replace('!\s*\?>\s*$!',"\n".'$plugin_tx[\'teaser\'][\'temp_teaser_file\']="";'."\n\n?>" ,$languagefile);
-            }
-            if(file_put_contents($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php',$languagefile)===false) {
-                e('cntsave', 'language', $pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
-            }
-            include($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
-        }
 
 
 
@@ -155,7 +141,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
 
                     // copying
                     if($newteaserfile == 'copy')  {
-                        $fn = $plugin_tx['teaser']['temp_teaser_file']? $plugin_tx['teaser']['temp_teaser_file'] : 'teaser_'.$sl.'.txt';
+                        $fn = !empty($_SESSION['teaser'][$sl]['file'])? $_SESSION['teaser'][$sl]['file'] : 'teaser_'.$sl.'.txt';
                         $oldfile = file_get_contents($datapath.$fn);
                         if($oldfile === false) e('cntopen', 'content', $datapath.$fn);
                         if (file_put_contents($datapath.$newfile, $oldfile) === false) {
@@ -169,8 +155,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
 
             } elseif($classedit)  {
 
-                $newfile = $plugin_tx['teaser']['temp_teaser_file'];
-                $fn = $plugin_tx['teaser']['temp_teaser_file']? $plugin_tx['teaser']['temp_teaser_file'] : 'teaser_'.$sl.'.txt';
+                $newfile = $fn = !empty($_SESSION['teaser'][$sl]['file'])? $_SESSION['teaser'][$sl]['file'] : 'teaser_'.$sl.'.txt';
                 $teaserfile = file_get_contents($datapath.$fn);
                 if($teaserfile === false) e('cntopen', 'content', $datapath.$fn);
                 $newclass = $newclass? ' '.$newclass : '';
@@ -184,14 +169,12 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
             }
 
 
-            // writing to lang config which teaser file is "active"
-            $languagefile = preg_replace('!(\'temp_teaser_file\'\]=\")(.*)(\";)!','${1}'.$newfile.'${3}',$languagefile);
-            file_put_contents($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php',$languagefile);
-            include($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
+            // store in session which teaser file is "active"
+            $_SESSION['teaser'][$sl]['file'] = $newfile;
         }
 
-        // if no "active" teaser file is listed in lang config, the standard file will be set as active
-        $fn = $plugin_tx['teaser']['temp_teaser_file']? $plugin_tx['teaser']['temp_teaser_file'] : 'teaser_'.$sl.'.txt';
+        // if no "active" teaser file is stored in the session, the standard file will be set as active
+        $fn = !empty($_SESSION['teaser'][$sl]['file'])? $_SESSION['teaser'][$sl]['file'] : 'teaser_'.$sl.'.txt';
 
         // create the "active" teaser file and path if necessary
         if(!is_file($datapath.$fn)){
@@ -236,11 +219,11 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
                 }
                 if($newnr == 'copy') {
                     $newnr = $teasercount + 1;
-                    $teaserarray[$teasercount] = $teaserarray[($plugin_tx['teaser']['temp_teaser_nr']-1)];
+                    $teaserarray[$teasercount] = $teaserarray[($_SESSION['teaser'][$sl]['nr']-1)];
                 }
                 if($newnr == 'del') {
                     $newnr = 1;
-                    array_splice($teaserarray, ($plugin_tx['teaser']['temp_teaser_nr']-1),1);
+                    array_splice($teaserarray, ($_SESSION['teaser'][$sl]['nr']-1),1);
                 }
                 $teaserfamily = implode('<!---->',$teaserarray);
                 // make backup of old teaserfile
@@ -252,7 +235,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
                 $teasercount = count($teaserarray);
             }
             if($newnr == 'bak') {
-                $newnr = $plugin_tx['teaser']['temp_teaser_nr']? $plugin_tx['teaser']['temp_teaser_nr'] : 1;
+                $newnr = !empty($_SESSION['teaser'][$sl]['nr'])? $_SESSION['teaser'][$sl]['nr'] : 1;
                 if(!is_file($datapath.$fn.'bak')) {
                     $o .= '<p class="cmsimplecore_warning">' . $plugin_tx['teaser']['no_backup_found'] . '</p>';
                 } else {
@@ -271,17 +254,14 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
             }
             if(isset($_POST['move']) && $_POST['move']>0 && is_numeric($_POST['teaserselect']) ) {
                 $newnr = $_POST['move'];
-                $movingteaser = $teaserarray[($plugin_tx['teaser']['temp_teaser_nr']-1)];
-                array_splice($teaserarray, ($plugin_tx['teaser']['temp_teaser_nr']-1),1);
+                $movingteaser = $teaserarray[($_SESSION['teaser'][$sl]['nr']-1)];
+                array_splice($teaserarray, ($_SESSION['teaser'][$sl]['nr']-1),1);
                 array_splice($teaserarray, ($newnr-1),0,$movingteaser);
                 $teaserfamily = implode("<!---->",$teaserarray);
                 // put div container around teaser family
                 $teaserfinal = '<div class="teaser '.$teaserclass.'">'.$teaserfamily .'</div>'."\n";
                 file_put_contents($datapath.$fn, $teaserfinal);
             }
-            $languagefile = preg_replace('!(\'temp_teaser_nr\'\]=\")(.*)(\";)!','${1}'.$newnr.'${3}',$languagefile);
-            file_put_contents($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php',$languagefile);
-            include($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
         }
 
 
@@ -317,7 +297,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
 
             $saveteaser = "\n" . $saveteaser . "\n";
 
-            $teaserarray[($plugin_tx['teaser']['temp_teaser_nr']-1)] = $saveteaser ;
+            $teaserarray[($_SESSION['teaser'][$sl]['nr']-1)] = $saveteaser ;
             $teaserfamily = implode('<!---->',$teaserarray);
 
             // put div container around teaser family
@@ -353,8 +333,8 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
                 $pvtemplate=$array[1];
                 $pvmorepagedata= isset($array[2])? $array[2]:'';
 
-                if($plugin_tx['teaser']['temp_teaser_file'] &&  $pvfile == $plugin_tx['teaser']['temp_teaser_file']
-                    || !$plugin_tx['teaser']['temp_teaser_file'] &&  $pvfile == 'teaser_'.$sl.'.txt') {
+                if(!empty($_SESSION['teaser'][$sl]['file']) &&  $pvfile == $_SESSION['teaser'][$sl]['file']
+                    || empty($_SESSION['teaser'][$sl]['file']) &&  $pvfile == 'teaser_'.$sl.'.txt') {
                     $teasertemplate = $pvtemplate;
                     $teasermorepagedata = $pvmorepagedata;
                     break;
@@ -422,7 +402,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
         $teaserfiles_select = '';
         foreach($teaserfiles as $value){
         	$selected = '';
-        	if($plugin_tx['teaser']['temp_teaser_file'] == $value) {$selected = ' selected';}
+        	if(!empty($_SESSION['teaser'][$sl]['file']) && $_SESSION['teaser'][$sl]['file'] == $value) {$selected = ' selected';}
         	$teaserfiles_select .= "\n<option value=$value$selected>$value</option>";
         }
         $o .= '<select name="newteaserfile" OnChange="
@@ -493,13 +473,11 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
         //======================================
 
         // clean up the temp value (higher value than available teasers can lead to unwanted multiplication of teasers)
-        if(!is_numeric($plugin_tx['teaser']['temp_teaser_nr'])
-            || $plugin_tx['teaser']['temp_teaser_nr'] > $teasercount) {
+        if(empty($_SESSION['teaser'][$sl]['nr'])
+            || !is_numeric($_SESSION['teaser'][$sl]['nr'])
+            || $_SESSION['teaser'][$sl]['nr'] > $teasercount) {
 
-            $languagefile = file_get_contents($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
-            $languagefile = preg_replace('!(\'temp_teaser_nr\'\]=\")(.*)(\";)!','${1}'. 1 .'${3}',$languagefile);
-            file_put_contents($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php',$languagefile);
-            include($pth['folder']['plugins'].$plugin .'/languages/' . $sl . '.php');
+            $_SESSION['teaser'][$sl]['nr'] = 1;
         }
 
         // select add or delete single teaser
@@ -509,7 +487,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
         $singleteaser_select = $position_select = '';
         for ($i = 1; $i <= $teasercount; $i++ ) {
        	    $checked = '';
-        	if($plugin_tx['teaser']['temp_teaser_nr'] == $i) {$checked = ' checked="checked"';}
+        	if($_SESSION['teaser'][$sl]['nr'] == $i) {$checked = ' checked="checked"';}
 
         	$singleteaser_select .= tag('input type="radio" title="'
                                  .  $plugin_tx['teaser']['hint_click_preview']
@@ -544,7 +522,7 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
         // show editable teaser contents
         //===========================================
         // find out which teaser is shown, background & link
-        $selectedteaser = $teaserarray[($plugin_tx['teaser']['temp_teaser_nr']-1)];
+        $selectedteaser = $teaserarray[($_SESSION['teaser'][$sl]['nr']-1)];
 
         $hideselected = strpos($selectedteaser,'<!--')!==false? ' selected':'';
         $hideteaser   = '<option value="hide"'.$hideselected.'>' . $plugin_tx['teaser']['hide_teaser'] . '</option>';

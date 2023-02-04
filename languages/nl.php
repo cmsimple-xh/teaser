@@ -24,8 +24,6 @@
     $plugin_tx['teaser']['file-manager_enter_new_file_name']="enter new file name here";
     $plugin_tx['teaser']['file-manager_standard_file']="standard teaser file";
     $plugin_tx['teaser']['file-manager_wrong_char']="<b>Error:</b> Wrong character in file name. Only <b>a-z A-Z _ - . 0-9</b> allowed.";
-	$plugin_tx['teaser']['temp_teaser_nr']="";
-	$plugin_tx['teaser']['temp_teaser_file']="";
 	$plugin_tx['teaser']['license']="This plugin is free software under the terms of the GNU General Public License v. 3 or later, analog to ";
 
 ?>
