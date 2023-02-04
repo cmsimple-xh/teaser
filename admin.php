@@ -252,8 +252,8 @@ if (function_exists('XH_wantsPluginAdministration') && XH_wantsPluginAdministrat
 
                 }
             }
-            if(isset($_POST['move']) && $_POST['move']>0 && is_numeric($_POST['teaserselect']) ) {
-                $newnr = $_POST['move'];
+            if(isset($_POST['move']) && (int) $_POST['move']>0 && is_numeric($_POST['teaserselect']) ) {
+                $newnr = (int) $_POST['move'];
                 $movingteaser = $teaserarray[($_SESSION['teaser'][$sl]['nr']-1)];
                 array_splice($teaserarray, ($_SESSION['teaser'][$sl]['nr']-1),1);
                 array_splice($teaserarray, ($newnr-1),0,$movingteaser);
